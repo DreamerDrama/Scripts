@@ -1,247 +1,161 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset = "UTF-8">
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title>追梦剧社剧本沉浸式体验</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沉浸式剧本体验活动</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500&display=swap');
-        * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-        }
+        @import url('https://fonts.font.im/css?family=PT+Serif');
         body {
-            font-family: 'Noto Serif SC', serif;
-            color: #666666;
-            background-color: rgb(23, 44, 60);
+            font-family: 'PT Serif', serif;
+            background-image: linear-gradient( 135deg, #FFF6B7 10%, #F6416C 100%);
+            color: #000;
+            margin: 0;
+            padding: 20px;
         }
-        nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(23, 44, 60, 0.9);
-            padding: 10px;
+
+        h1 {
+            font-size: 32px;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .title {
+            font-size: 24px;
+            color: #000000;
+            margin-bottom: 10px;
+        }
+
+        .info {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: rgb(91, 91, 91);
+            margin-top: auto;
             text-align: center;
         }
-        nav .button {
-            display: inline-block;
-            padding: 5px 10px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            color: white;
-            border-radius: 5px;
-            margin-right: 5px;
-        }
-        nav .button:hover {
-            border: 1px solid white;
-            background-color: white;
-            cursor: pointer;
-            color: rgb(153, 80, 84);
-        }
-        section {
-            max-width: 600px;
-            margin: 65px auto;
-            margin-top: 10px;
-        }
+
         header{
-            padding: 10px;
-            background-color: aliceblue;
-            color: aliceblue;
+            color: rgb(18, 79, 132);
             text-align: center;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(23, 44, 60, 0.9);
             z-index: 999;
+            font-size: 30px;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.5);
+            height: auto;
         }
         .qrcode{
-            padding-top: 65px;
+            margin-top: 100px;
+            margin-bottom: 20px;
             position: relative;
             text-align: center;
             z-index: 998;
-        }
-        .post-wrapper:first-child .post-inner {
-            border-top-color: rgba(0, 0, 0, 0.1);
-        }
-        .post-wrapper .post-inner {
-            background-color: white;
-            display: block;
-            cursor: pointer;
-            overflow: hidden;
-            text-decoration: none;
-            color: #666666;
-            -webkit-transition-duration: 0.25s;
-            transition-duration: 0.25s;
-            -webkit-transition-timing-function: ease-out;
-            transition-timing-function: ease-out;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            transition: 0.25s;
-        }
-        .post-wrapper .post-inner .open {
-            margin-top: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 1px rgba(0, 0, 0, 0.2);
-            border-bottom-color: transparent;
-        }
-        .post-wrapper .post-inner.open:hover {
-            background-color: white;
-        }
-        .post-wrapper .post-inner:hover {
-            background-color: #f0f2f5;
-        }
-        .post-wrapper .post-inner h2 {
-            font-weight: 400;
-            color: #54626C;
-        }
-        .post-wrapper .post-inner .text {
-            display: none;
-        }
-        .post-wrapper .post-inner p {
-            font-weight: 300;
-            padding: 10px 0;
-        }
-        .post-wrapper .post-inner p.lead {
-            font-size: 1.2em;
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-    <script>
-        const N= 7;
-        function showtext(k){
-            var textElement = this.document.getElementById("text" + k);
-            if (textElement.style.display === "none" || textElement.style.display === "") {
-                textElement.style.display = "block";
-            } else {
-                textElement.style.display = "none";
-            }
-        }
-        function openAllText(){
-            for (let i = 1; i <= N; i ++){
-                var textElement = this.document.getElementById("text" + i);
-                if (textElement.style.display === "none" || textElement.style.display === "") {
-                    textElement.style.display = "block";
-                }
-            }
-        }
-        function closeAllText(){
-            for (let i = 1; i <= N; i ++){
-                var textElement = this.document.getElementById("text" + i);
-                if (!(textElement.style.display === "none" || textElement.style.display === "")) {
-                    textElement.style.display = "none";
-                }
-            }
-        }
-    </script>
-    <nav>
-        <div class="open-all button" onclick = "openAllText();">Open all</div>
-        <div class="close-all button" onclick = "closeAllText();">Close all</div>
-    </nav>
     <header>
-        <p style = "font-size: 30px;">追梦剧社剧本沉浸式体验</p>
+        <p>追梦剧社剧本沉浸式体验</p>
     </header>
     <div class = "qrcode">
-        <p style = "color: white;">↓扫码入群↓</p>
+        <p style = "color: rgb(18, 79, 132);">↓扫码入群↓</p>
         <img src = "./imgs/jbQRcode.png" width = "150px">
     </div>
-    <section>
-        <div class="post-wrapper">
-            <div class="post-inner" onclick = "showtext(1);" name = "watercolorDiv">
-                <h2>古镜奇谈</h2>
-                <p class="lead">6人本&emsp;推荐3男3女&emsp;¥35/人&emsp;时长：4-5h
-                <br>类型：古风/超硬核推理
-                <br>难度：★★★★
-                </p>
-                <div class="text" id = "text1">
-                    <p> 一椽枯笔，写不尽悲欢过往
-                    <br>两枚铜钱，算不透世事无常
-                    <br>半方枷锁，留不住皎月飞光
-                    <br>一块面纱，遮不断蜚短流长
-                    <br>七尺长剑，荡不平天下魍魉
-                    <br>几碗汤面，暖不了长夜苍凉</p>
-                </div>
-            </div>
+    <div class="card-container">
+        <div class="card">
+            <h2 class="title">古镜奇谈</h2>
+            <p class="info">类型：古风/超硬核推理</p>
+            <p class="info">难度：★★★★☆</p>
+            <p class="info">时长：4-5h</p>
+            <p class="info">简介：一椽枯笔，写不尽悲欢过往...</p>
+            <p class="price">￥35/人</p>
         </div>
-        <div class="post-wrapper">
-            <div class="post-inner" onclick = "showtext(2);">
-                <h2>古木吟</h2>
-                <p class="lead">6人本&emsp;推荐3男3女&emsp;¥35/人&emsp;时长：5h左右
-                <br>类型：现代/情感沉浸/微恐
-                <br>难度：★★★
-                </p>
-                <div class="text" id = "text2">
-                    <p>&emsp;&emsp;20世纪末，连续三年在火舞祭当天发生了居民举家失踪的谜案，祭典暂时搁浅。数年后，火舞祭的习俗得以恢复。镇上春晖中学的六名学生却在火舞祭当天突然失去意识，醒来后在校舍看到了不可思议的景象……</p>
-                </div>
-            </div>
+
+        <div class="card">
+            <h2 class="title">古木吟</h2>
+            <p class="info">类型：现代/情感沉浸/微恐</p>
+            <p class="info">难度：★★★☆</p>
+            <p class="info">时长：5h左右</p>
+            <p class="info">简介：20世纪末，连续三年在火舞祭当天发生了居民举家失踪的谜案...</p>
+            <p class="price">￥35/人</p>
         </div>
-        <div class="post-wrapper">
-            <div class="post-inner" onclick = "showtext(3);">
-                <h2>王诈</h2>
-                <p class="lead">6人本&emsp;推荐4男2女&emsp;¥15-25/人&emsp;时长：4h左右
-                <br>类型：立意/欢乐/机制
-                <br>难度：★★
-                </p>
-                <div class="text" id = "text3">
-                    <p>&emsp;&emsp;有点桌游性质的欢乐本呢～海淀公安根据现在的热点话题——反诈，联合中国人民大学开创的剧本～</p>
-                </div>
-            </div>
+
+        <div class="card">
+            <h2 class="title">王诈</h2>
+            <p class="info">类型：立意/欢乐/机制</p>
+            <p class="info">难度：★★</p>
+            <p class="info">时长：4h左右</p>
+            <p class="info">简介：有点桌游性质的欢乐本呢～海淀公安根据现在的热点话题——反诈，联合中国人民大学开创的剧本～</p>
+            <p class="price">￥15-25/人</p>
         </div>
-        <div class="post-wrapper">
-            <div class="post-inner" onclick = "showtext(4);">
-                <h2>青楼</h2>
-                <p class="lead">7人本&emsp;4男3女（强烈建议反串）&emsp;¥35/人&emsp;时长：5h左右
-                <br>类型：古风/欢乐/阵营
-                <br>难度：★★
-                </p>
-                <div class="text" id = "text4">
-                    <p>&emsp;&emsp;公元617年唐国公于晋阳起兵，凭借一方至宝“混元石”的力量，东征西讨，万国来朝。
-                        这事在如今大唐宫中乃是口禁，这“混元石”如今到底去了哪里，世人们都是面面皆问。
-                        今天我们就要从长安城内，其一等之青楼玉满楼说起……</p>
-                </div>
-            </div>
+
+        <div class="card">
+            <h2 class="title">青楼</h2>
+            <p class="info">类型：古风/欢乐/阵营</p>
+            <p class="info">难度：★★☆</p>
+            <p class="info">时长：5h左右</p>
+            <p class="info">简介：公元617年唐国公于晋阳起兵，凭借一方至宝“混元石”的力量，东征西讨，万国来朝...</p>
+            <p class="price">￥35/人</p>
         </div>
-        <div class="post-wrapper">
-            <div class="post-inner" onclick = "showtext(5);">
-                <h2>年轮</h2>
-                <p class="lead">5人本 推荐3男2女 ￥35/人 时长：4h左右
-                <br>类型：变格/推理/还原
-                <br>难度：★★★
-                </p>
-                <div class="text" id = "text5">
-                    <p>&emsp;&emsp;位于T市郊外160多公里，一座山谷内的废墟，原先是一个仅有数十户人口的小村，一天夜里突发大火，山村焚灭。今天因某种原因，一群人聚集到了这里……</p>
-                </div>
-            </div>
+
+        <div class="card">
+            <h2 class="title">年轮</h2>
+            <p class="info">类型：变格/推理/还原</p>
+            <p class="info">时长：4h左右</p>
+            <p class="info">难度：★★★☆</p>
+            <p class="info">简介：位于T市郊外160多公里，一座山谷内的废墟，原先是一个仅有数十户人口的小村，一天夜里突发大火，山村焚灭...</p>
+            <p class="price">￥35/人</p>
         </div>
-        <div class="post-wrapper">
-            <div class="post-inner" onclick = "showtext(6);">
-                <h2>漓川怪谈簿</h2>
-                <p class="lead">7人本&emsp;4女3男&emsp;￥40/人&emsp;时长：5h左右
-                <br>类型：硬核还原/推理/变格
-                <br>难度：★★★★
-                </p>
-                <div class="text" id = "text6">
-                    <p>&emsp;&emsp;相传在一片叫做常世的土地上，孕育出了无数精怪。在常世有一片湖泊，其中心有一建筑，名为蜃气楼。它没有一根用于支撑的柱子，却能彻彻底底的悬于湖上。这里是平将门大人的居所，没有人可以通行，但今天你们睁开双眼，忽然发现自己居然处在这座神秘的建筑里……</p>
-                </div>
-            </div>
+
+        <div class="card">
+            <h2 class="title">漓川怪谈簿</h2>
+            <p class="info">类型：硬核还原/推理/变格</p>
+            <p class="info">时长：5h左右</p>
+            <p class="info">难度：★★★★☆</p>
+            <p class="info">简介：相传在一片叫做常世的土地上，孕育出了无数精怪。在常世有一片湖泊，其中心有一建筑，名为蜃气楼。它没有一根用于支撑的柱子，却能彻彻底底的悬于湖上...</p>
+            <p class="price">￥40/人</p>
         </div>
-        <div class="post-wrapper">
-            <div class="post-inner" onclick = "showtext(7);">
-                <h2>群雄逐鹿</h2>
-                <p class="lead">8人本&emsp;5男3女&emsp;￥62.55/人&emsp;时长：8h左右
-                <br>类型：阵营/机制/欢乐/还原
-                <br>难度：★★★
-                </p>
-                <div class="text" id = "text7">
-                    <p>&emsp;&emsp;大汉第一媒体月旦评（许劭：月旦雅评，世论天下（bushi）：普天之下，武者之最：东神、西仙、南虎、北皇。另有坊间传闻：先生丫鬟一间房，瞎子病鬼床下藏。乞丐围着绣娘转，战神狭路遇霸王。</p>
-                </div>
-            </div>
+
+        <div class="card">
+            <h2 class="title">群雄逐鹿</h2>
+            <p class="info">类型：阵营/机制/欢乐/还原</p>
+            <p class="info">时长：8h左右</p>
+            <p class="info">难度：★★★</p>
+            <p class="info">简介：大汉第一媒体月旦评（许劭：月旦雅评，世论天下（bushi）：普天之下，武者之最：东神、西仙、南虎、北皇...</p>
+            <p class="price">￥62.55/人</p>
         </div>
-    </section>
+    </div>
 </body>
+
 </html>
